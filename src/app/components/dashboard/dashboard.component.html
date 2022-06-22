@@ -7,33 +7,36 @@
             <h5>Books</h5>
         </div>
     <div class="no-books">
-        <h4 class="no-of-books">(1)</h4>
+        <h4 class="no-of-books">({{totalBooks}} items)</h4>
     </div>
     <input type="text" class="search" placeholder="  search products..." name="search" >
     <div class="sort-book">
 
-        <select class="sortby" >
+        <select class="sortby" placeholder="sortby"  >
             <option selected value="Relevance">Sort By Relevance</option>
             <option value="Ascending">Price:Low to High</option>
             <option value="Descending">Price:High to Low</option>
         </select>
     </div>
+
     <img routerLink="/wish" src="../../assets/icons/wishlist.svg" alt="wishlist image is loading..." class="cart-image img-wishlist" >
     <p class="cart-items">1</p>
     <!-- <p class="cart-name">cart</p> -->
         <img routerLink="/cart" src="../../assets/icons/cart.svg" alt="cart image is loading..." class="cart-image">
         <p class="cart-items">10</p>
     </div>
+
+
     <div class="book-container">
-        <div class="card card-container" >
+        <div class="card card-container" *ngFor="let book of books">
             <div class="book-image">
-                <img src="../../assets/images/book1.jpg" class="card-img-top" alt="Book Image is loading...">
-                <h6 class="first-txt" >Out Of Stock</h6>
+                <img [src]="book.bookLogo" class="card-img-top" alt="Book Image is loading...">
+                <h6 class="first-txt" *ngIf="book.bookQuantity==0">Out Of Stock</h6>
             </div>
             <div class="card-body">
-            <h5 class="card-title">AA</h5>
-            <p class="card-text">by Bbb</p>
-            <p class="card-text">RS.120</p>
+            <h5 class="card-title">{{book.bookName}}</h5>
+            <p class="card-text">by {{book.bookAuthor}}</p>
+            <p class="card-text">RS.{{book.bookPrice}}</p>
             <div class="button-container" >
                 <!-- <ng-container *ngFor="let i of index"> -->
                 <!-- <button type="button" class="button" (click)="addToCart(book.bookID)" *ngIf="book.quantity!=null &&  this.carts.data[0].book.bookID!=book.bookID">Add to Bag</button>
@@ -43,155 +46,15 @@
                 <!-- </ng-container> -->
                 <button type="button" class="button" >Add to Bag</button>
                 <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
+                <button type="button" class="button wishlist"  >Wishlist</button>
                 <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
 
             </div>
             </div>
         </div>
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../../assets/images/book2.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">AA</h5>
-            <p class="card-text">by Bbb</p>
-            <p class="card-text">RS.120</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../../assets/images/book3.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">AA</h5>
-            <p class="card-text">by Bbb</p>
-            <p class="card-text">RS.120</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../../assets/images/book4.jpg" class="card-img-top" alt="Book Image is loading...">
-                <h6 class="first-txt" >Out Of Stock</h6>
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">AA</h5>
-            <p class="card-text">by Bbb</p>
-            <p class="card-text">RS.120</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../../assets/images/book5.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">AA</h5>
-            <p class="card-text">by Bbb</p>
-            <p class="card-text">RS.120</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../../assets/images/book6.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">AA</h5>
-            <p class="card-text">by Bbb</p>
-            <p class="card-text">RS.120</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../../assets/images/book7.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">AA</h5>
-            <p class="card-text">by Bbb</p>
-            <p class="card-text">RS.120</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-        <div class="card card-container" >
-            <div class="book-image">
-                <img src="../../assets/images/book8.jpg" class="card-img-top" alt="Book Image is loading...">
-                <!-- <h6 class="first-txt" >Out Of Stock</h6> -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title">AA</h5>
-            <p class="card-text">by Bbb</p>
-            <p class="card-text">RS.120</p>
-            <div class="button-container" >
-                
-                <button type="button" class="button" >Add to Bag</button>
-                <!-- <button type="button" class="button button-added"  *ngIf="this.carts.data[0].book.bookID==book.bookID" (click)="alreadyAdded()">Added to Bag</button> -->
-                <button type="button" class="button wishlist" >Wishlist</button>
-                <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
-
-            </div>
-            </div>
-        </div>
-
-
-        
     </div>
 </div>
+<!-- [src]="book.bookImg" -->
+<!-- src="../../assets/images/book1.jpg" -->
+
+<app-footer></app-footer>

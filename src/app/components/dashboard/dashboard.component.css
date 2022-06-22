@@ -26,14 +26,15 @@
 }
 .book-image{
   background-color:lightgray;
+  
 }
 .button-container{
   display: flex;
 }
 .card-img-top{
-  width: 100px;
-  height: 120px;
-  margin: 25px 10px 20px 40px;
+  width: 120px;
+  height: 160px;
+  margin: 25px 10px 20px 48px;
   display: block;
   /* margin:auto ;
   width: 50%;

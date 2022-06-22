@@ -9,6 +9,7 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
 import { CustomerComponent } from './components/customer/customer.component';
 import { LoginComponent } from './components/login/login.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {path:"",redirectTo:"/login",pathMatch:"full"},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:"orderSummary",component:OrderSummaryComponent},
   {path:"order",component:OrderComponent},
   {path:"customer",component:CustomerComponent},
+  {path:"changePassword",component:ChangePasswordComponent},
   
   
 ];
