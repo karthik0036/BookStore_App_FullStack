@@ -1,5 +1,5 @@
 <div class="form-content">
-    <form  >
+    <form  #myForm="ngForm"  novalidate>
       <div class="form-head">
         <div class="form-head-text">Registration-Details</div>
          <!-- <a ><img class="form-head-image" src="../../assets/images/sign-out.jpg"
@@ -42,14 +42,14 @@
             <!-- <span class="error"></span> -->
           </div>
         <div class="buttons-contact">
-          <button type="button" class="button button-cancel" id="cancelButton" >Cancel</button>
-          <!-- <button type="button" class="button button-cancel" id="cancelButton" (click)="returnDashboard()" *ngIf="this.Id != null">Cancel</button> -->
-          <button type="button" class="button button-submit" id="submitButton" (click)="onAddUser()">SignUp</button>
-          <!-- <button type="button" class="button button-submit" id="submitButton" [disabled]="!myForm.valid " (click)="updateUser()" *ngIf="this.Id !=null">Update</button> -->
+          <button type="button" class="button button-cancel" id="cancelButton" *ngIf="this.Id == null" (click)="returnLogin()">Cancel</button>
+          <button type="button" class="button button-cancel" id="cancelButton" *ngIf="this.Id != null" (click)="returnDashboard()" >Cancel</button>
+          <button type="button" class="button button-submit" id="submitButton" (click)="registerUser()" *ngIf="this.Id==null">SignUp</button>
+          <button type="button" class="button button-submit" id="submitButton"  (click)="updateUser()" *ngIf="this.Id !=null">Update</button>
           <button type="reset" class="button button-reset" id="resetButton" >Reset</button>
         </div>
         <div class="text-center mt-4"> <span>Already a member?</span> <button class="astext"
-          routerLink="/login">login</button><br><br>
+          (click)="returnLogin()">login</button><br><br>
         </div>
       </div>
     </form>

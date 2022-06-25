@@ -10,6 +10,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { LoginComponent } from './components/login/login.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {path:"",redirectTo:"/login",pathMatch:"full"},
@@ -17,12 +18,18 @@ const routes: Routes = [
   {path:"register",component:UserComponent},
   {path:"login",component:LoginComponent},
   {path:"dashboard",component:DashboardComponent},
+  {path:"dashboard/:token",component:DashboardComponent},
   {path:"cart",component:CartComponent},
+  {path:"cart/:token",component:CartComponent},
   {path:"wish",component:WishlistComponent},
   {path:"orderSummary",component:OrderSummaryComponent},
   {path:"order",component:OrderComponent},
-  {path:"customer",component:CustomerComponent},
+  {path:"update",component:CustomerComponent},
+  {path:"update/:token",component:CustomerComponent},
   {path:"changePassword",component:ChangePasswordComponent},
+  {path:"profile/:email",component:UserProfileComponent},
+  {path:"update/:Id",component:UserComponent},
+  {path:"updateUser/:Id", component:UserComponent},
   
   
 ];

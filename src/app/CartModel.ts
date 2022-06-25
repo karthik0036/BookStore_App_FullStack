@@ -1,11 +1,11 @@
 export class Cart{
-    userID:number;
-    bookID:number;
+    userId:number;
+    bookId:number;
     quantity:number;
 
-    constructor(bookID:number,userID:number,quanity:number){
-        this.userID=userID;
-        this.bookID=bookID
+    constructor(bookId:number,userId:number,quanity:number){
+        this.userId=userId;
+        this.bookId=bookId;
         this.quantity=quanity;
 
     }

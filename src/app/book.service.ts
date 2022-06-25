@@ -15,8 +15,8 @@ export class BookService {
     getBookRecords(){
         return this.httpClient.get(this.baseUrl + "/getBooks");
     }
-    getBookRecordByBookName(bookName:any){
-        return this.httpClient.get(this.baseUrl +"/getBookByName/"+ bookName);
+    getBookRecordByBookName(name:any){
+        return this.httpClient.get(this.baseUrl +"/getBookByName/"+ name);
     }
 
     sortAscByPrice(){
@@ -25,6 +25,10 @@ export class BookService {
     sortDescByPrice(){
         return this.httpClient.get(this.baseUrl + "/sortdesc");
     }
+
+    getBookRecordById(Id:any){
+        return this.httpClient.get(this.baseUrl + "/getBook/"+Id)
+      }
 
     
 }
