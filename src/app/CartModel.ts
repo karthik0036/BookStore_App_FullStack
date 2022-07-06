@@ -1,12 +1,22 @@
 export class Cart{
-    userId:number;
-    bookId:number;
-    quantity:number;
 
-    constructor(bookId:number,userId:number,quanity:number){
-        this.userId=userId;
-        this.bookId=bookId;
-        this.quantity=quanity;
+    token!:string;
+    //userid:number;
+    bookid!:number;
+    quantity!:number;
 
-    }
+    // constructor(token:string,bookid:number,userid:number,quanity:number){
+    //     this.token=token;
+    //     this.userid=userid;
+    //     this.bookid=bookid;
+    //     this.quantity=quanity;
+
+    // }
+
+    // constructor(token:string,bookid:number,quanity:number){
+    //     this.token=token;
+    //     this.bookid=bookid;
+    //     this.quantity=quanity;
+
+    // }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../../LoginModel';
 import { Router } from '@angular/router';
+import { InteractionService } from '../../interaction.service';
 import { UserService } from '../../user.service';
 
 
@@ -19,18 +20,11 @@ export class LoginComponent implements OnInit {
   login:Login =  new Login('','');
   registerData=false;
 
-  // To store the user entered  email for login from ng model
-  email!: string;
 
-  // To store user enterd password for login from ngModel 
-  password!: string;
-
-  // to store the logined in user user id to pass later into param  
-  userId!: any
 
   
 
-  constructor(private router:Router,private service:UserService) { }
+  constructor(private router:Router,private service:UserService, private intr:InteractionService) { }
 
   ngOnInit(): void {
   }
@@ -46,10 +40,11 @@ export class LoginComponent implements OnInit {
       this.service.userLogin(this.login).subscribe((data:any)=>{
         this.service.getToken(this.login.email).subscribe((getData:any)=>{
           console.log("Token retrieved successfully",getData);
-          this.token=getData;
-          console.log("Token from login",this.token.data);
-          // this.interaction.sendToken(this.token.data);
-          this.router.navigate(['dashboard',this.token.data]);
+          this.token=getData.data;
+          localStorage.setItem("token",this.token);
+          console.log("Token from login",this.token);
+          this.intr.sendToken(this.token);
+          this.router.navigate(['dashboard',this.token]);
         });
         console.log("User Logged In Successfully",data); 
       },error=>{
@@ -59,29 +54,5 @@ export class LoginComponent implements OnInit {
     //this.router.navigate(['dashboard']);
   }
 
-  // submitTestLoginStatus() {
-  //   this.service.getloginStatus(this.email,this.password).subscribe((getData: any) => {
-  //     this.status = getData;
-  //   });
-  //   if (this.status == 1) {
-  //     alert("Login successful , PLEASE WAIT");
-
-  //     this.service.getUserRecordByEmail(this.email).subscribe((getData: any) => {
-  //       this.userId = getData;
-  //     });
-  //     this.service.getToken(this.email).subscribe((data: any) => {
-  //       this.token = data.data;
-  //       this.router.navigate(["dashboard", this.token]);
-  //     });
-  //   }
-  //   if (this.status == 0) {
-  //     console.log("invalid user email");
-  //   }
-  //   if (this.status == 2) {
-  //     console.log("invalid user password");
-  //   }
-
-
-  // }
-
+  
 }

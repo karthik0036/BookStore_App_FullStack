@@ -9,7 +9,7 @@
     <div class="no-books">
         <h4 class="no-of-books">({{totalBooks}} items)</h4>
     </div>
-    <input type="text" class="search" placeholder="  search products..." name="search" [(ngModel)]="search" (change)="displayBook()">
+    <input type="text" class="search" placeholder="  search products..." name="search" [(ngModel)]="search" (input)="displayBook()">
     <div class="sort-book">
         <select class="sortby" placeholder="sortby" [(ngModel)]="sort" (change)="onChange()" >
             <option selected value="Relevance">Sort By Relevance</option>
@@ -47,8 +47,8 @@
                 <button type="button" class="button wishlist" *ngIf="book.quantity!=null && this.carts.data[0].book.bookID!=book.bookID">Wishlist</button>
                 <button type="button" class="button only-wishlist" *ngIf="book.quantity==null && this.carts.data[0].book.bookID!=book.bookID">Wishlist</button> -->
                 <!-- </ng-container> -->
-                <button type="button" class="button" *ngIf="book.quantity!=0" (click)="addToCart(book.bookId)">Add to Bag</button>
-                <button type="button" class="button button-added" *ngIf="book.quantity==0">Added to Bag</button>
+                <button type="button" class="button" *ngIf="book.quantity!=0"  (click)="addToCart(book.bookid)">Add to Bag</button>
+                <!-- <button type="button" class="button button-added" style="background-color: silver;" *ngIf="book.quantity==0">Added to Bag</button> -->
                 <button type="button" class="button wishlist"  >Wishlist</button>
                 <!-- <button type="button" class="button only-wishlist" >Wishlist</button> -->
 

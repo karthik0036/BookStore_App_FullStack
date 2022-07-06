@@ -1,5 +1,5 @@
 <div class="form-content">
-    <form  #myForm="ngForm"  novalidate>
+    <form  #myForm="ngForm" *ngIf="!submitted"  novalidate>
       <div class="form-head">
         <div class="form-head-text">Registration-Details</div>
          <!-- <a ><img class="form-head-image" src="../../assets/images/sign-out.jpg"

@@ -10,9 +10,11 @@ import { UserService } from '../../user.service';
 })
 export class UserComponent implements OnInit {
 
+  submitted:boolean=false;
+
   Id:any=this.route.snapshot.paramMap.get('Id');
 
-  user:User= new User('','','','','');
+  user:User= new User();
 
   constructor(private router:Router,private route:ActivatedRoute,private service:UserService) { }
 
@@ -23,9 +25,9 @@ export class UserComponent implements OnInit {
     })
   }
 
-  onAddUser(){
-    console.log(this.user);
-  }
+  // onAddUser(){
+  //   console.log(this.user);
+  // }
 
   registerUser(){
     this.service.postUserData(this.user).subscribe((data:any)=>{

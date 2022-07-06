@@ -6,12 +6,12 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
 
-    private baseUrl: string = "http://localhost:8080/cart";
+    private baseUrl: string = 'http://localhost:8080/cart';
 
     constructor(private httpClient: HttpClient) {}
 
     addCart(cart:any){
-        return this.httpClient.post(this.baseUrl + "/create",cart);
+        return this.httpClient.post(this.baseUrl + '/create',cart);
     }
 
     getCartRecordById(Id:any){
@@ -19,11 +19,11 @@ export class CartService {
     }
     
     getCartRecordByBookId(Id:any){
-        return this.httpClient.get(this.baseUrl + "/retrieveCartByBookId/"+Id);
+        return this.httpClient.get(this.baseUrl + "/retrieveCartByBookId/" + Id);
     }
     getCartRecordByUserId(Id:any){
-        return this.httpClient.get(this.baseUrl + "/retrieveCartByUserId/"+Id);
-      }
+        return this.httpClient.get(this.baseUrl + "/retrieveCartByUserId/"+ Id);
+    }
     getAllCartRecords(){
         return this.httpClient.get(this.baseUrl + "/getAll");
     }
@@ -34,6 +34,13 @@ export class CartService {
 
     updateCartByCartQuantityByCartId(Id:any,quantity:any){
         return this.httpClient.get(this.baseUrl + "/updateCartQuantity/"+Id+"?quantity="+quantity)
+    }
+
+    decreaseCartQuantity(Id:any){
+        return this.httpClient.get(this.baseUrl + "/decreaseQuantity/"+Id);
+    }
+    increaseCartQuantity(Id:any){
+        return this.httpClient.get(this.baseUrl + "/increaseQuantity/"+Id);
     }
 
    

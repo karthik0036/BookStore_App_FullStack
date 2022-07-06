@@ -5,6 +5,7 @@ import { Book } from '../../BookModel';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../user.service';
 import { CartService } from '../../cart.service';
+import { InteractionService } from '../../interaction.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,17 +18,35 @@ export class DashboardComponent implements OnInit {
   totalBooks: number = 10;
   search:any;
   sort!:string;
-
-  userId:any;
+  tempProduct:any;
+  user:any;
+  userid:any;
+  //bookId:any;
   carts:any;
-  cart:Cart =  new Cart(0,0,0);
+  
+  cart:Cart = new Cart();
   // cartCount : number = 0;
-  token=this.route.snapshot.paramMap.get("token");
+  token:any = this.route.snapshot.paramMap.get('token');
+  selected:boolean=false;
+  public TOKEN:any = "";
 
 
-  constructor(private router:Router,private route:ActivatedRoute,private service:BookService,private userService:UserService,private cartService:CartService) {}
+  constructor(private iteraction:InteractionService,private router:Router,private route:ActivatedRoute,private service:BookService,private userService:UserService,private cartService:CartService) {}
 
   ngOnInit(): void {
+
+    this.sort="Relevance";
+
+    this.TOKEN=localStorage.getItem("token");
+    console.log(this.TOKEN);
+   
+
+    // this.user=this.token;
+    // console.log(this.user);
+
+    this.getCartDetails();
+
+
     this.service.getBookRecords().subscribe((data:any)=>{
       console.log("Book Data retrieved successfully",data);
       this.books=data.data;
@@ -36,43 +55,73 @@ export class DashboardComponent implements OnInit {
 
     this.userService.getUserRecordByToken(this.token).subscribe((getData:any)=>{
       console.log("User record retrieved successfully");
-       this.userId=getData.data;
+       this.user=getData.data;
+       console.log(this.user)
+
+      
   });
+}
+  
 
-    this.getCartDetails();
+
+  addToCart(Id:any){
     
-  }
 
-  addToCart(bookId: number){
-    let i = 0
-    if (this.carts.data != 0) {
-      for (; i < this.carts.data.length; i++) {
-        if (this.carts.data[i].book.bookId == bookId) {
-          alert("book is already in cart");
-
-          break;
-        }
-      }
-      if (i == this.carts.data.length) {
-        this.cart.bookId = bookId;
-        this.cart.userId = this.userId;
-        this.cart.quantity = 1;
-        this.cartService.addCart(this.cart).subscribe((getdata: any) => {
-          this.carts = getdata;
+    // console.log(this.carts.data.length);
+      if(this.carts.data.length == 0){
+        this.cart.bookid=Id;
+        console.log("bookId",this.cart.bookid)
+        // this.cart.userid= this.user.userid;
+        // console.log("userId",this.cart.userid)
+        this.cart.token= this.TOKEN;
+        //console.log(this.cart.token);
+        console.log("Hello")
+        this.cart.quantity=1;
+        console.log("quantity",this.cart.quantity)
+        console.log(this.cart);
+        this.cartService.addCart(this.cart).subscribe((getData:any) =>{
+          console.log("Cart Added successfully !");
+          this.cart=getData.data;
           window.location.reload();
-
         });
-      }
-    } else {
-      this.cart.bookId = bookId;
-      this.cart.userId = this.userId;
-      this.cart.quantity = 1;
-      this.cartService.addCart(this.cart).subscribe((getdata: any) => {
-        this.carts = getdata;
-        window.location.reload();
-      });
     }
+    // else{
+    //   this.cart.bookId=2;
+    //   this.cart.userId=1;
+    //   this.cart.quantity=1;
+    //   this.cartService.addCart(this.cart).subscribe((getData:any) =>{
+    //             console.log("Cart Added !");
+    //             this.cart=getData;
+    //             //window.location.reload();
+    //           });
+    else{
+      this.cartService.getCartRecordByBookId(Id).subscribe((data:any)=>{
+        this.tempProduct=data;
+        console.log(this.tempProduct.data);
+        if(this.tempProduct.data==null){
+          this.cart.bookid=Id;
+          console.log("bookid",this.cart.bookid)
+          //this.cart.userid=this.userid;
+          //console.log("userid",this.cart.userid)
+          this.cart.token= this.TOKEN;
+          console.log(this.cart.token);
+          this.cart.quantity=1;
+          //console.log(this.cart);
+          this.cartService.addCart(this.cart).subscribe((getData:any) =>{
+            console.log("Cart Added !");
+            this.cart=getData.data;
+            //window.location.reload();
+          });
+        }
+        else{
+          
+          alert("Book Already present in the cart!!!");
+        }
+        // window.location.reload();
+      });
   }
+  
+}
 
   
   goToCart() {
@@ -134,14 +183,10 @@ onChange(){
 
 
   
-
-  // isAdded(id:any) {
-  //   var doesExist = this.cartList?.some(function(a:any) {
-  //     return a.book.bookId === id;
-  // });
-  // return doesExist;
-  
-  // }
+  sendToken(){
+    console.log("Token on dashboard",this.token);
+    this.iteraction.sendMessage(this.token);
+  }
 
  
 }

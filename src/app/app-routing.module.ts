@@ -23,14 +23,15 @@ const routes: Routes = [
   {path:"cart/:token",component:CartComponent},
   {path:"wish",component:WishlistComponent},
   {path:"orderSummary",component:OrderSummaryComponent},
+  {path:"orderSummary/:token",component:OrderSummaryComponent},
+  {path:"order/:Id",component:OrderComponent},
   {path:"order",component:OrderComponent},
-  {path:"update",component:CustomerComponent},
-  {path:"update/:token",component:CustomerComponent},
+  // {path:"update",component:CustomerComponent},
+  {path:"customer/:token",component:CustomerComponent},
   {path:"changePassword",component:ChangePasswordComponent},
   {path:"profile/:email",component:UserProfileComponent},
   {path:"update/:Id",component:UserComponent},
   {path:"updateUser/:Id", component:UserComponent},
-  
   
 ];
 

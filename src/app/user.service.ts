@@ -19,15 +19,15 @@ export class UserService {
     }
 
     getUserRecordById(Id:any){
-        return this.httpClient.get(this.baseUrl + "/get/"+Id)
+        return this.httpClient.get(this.baseUrl + "/get/"+Id);
       }
 
     deleteUserRecordById(Id:any){
         return this.httpClient.delete(this.baseUrl + "/delete/"+Id);
     }
 
-    updateUserRecordById(Id:any,user:any){
-        return this.httpClient.put(this.baseUrl + "/update/"+Id,user);
+    updateUserRecordById(token:any,user:any){
+        return this.httpClient.put(this.baseUrl + "/update/"+token,user);
     }
       
     userLogin(loginData:any){
