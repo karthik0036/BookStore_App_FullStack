@@ -34,9 +34,7 @@ export class UserService {
         return this.httpClient.post(this.baseUrl + "/login",loginData);
     }
 
-    // changePassword(changePasswordData:any){
-    //     return this.http.put(this.baseUrl + "/changepassword",changePasswordData,{responseType:"text" as "json"});
-    // }
+    
 
     getToken(email:any){
         return this.httpClient.get(this.baseUrl + "/getToken/"+ email);

@@ -32,17 +32,7 @@ export class OrderComponent implements OnInit {
     })
   }
 
-  // goToDashboard(){
-  //   for(let i=0;i<this.order.data.length;i++){
-  //   this.service.deleteOrderRecordById(this.order.data[i].orderID).subscribe(data=>{
-  //     console.log(data);
-      
-  //     // this.router.navigate(['dashboard',this.token]);
-  //   });
-  // }
-  //   this.router.navigate(['dashboard',this.token]);
-
-  // }
+ 
 
   toDash(){
     for(let i=0;i<this.order.data.length;i++){

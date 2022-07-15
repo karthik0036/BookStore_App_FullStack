@@ -27,13 +27,7 @@ export class CustomerComponent implements OnInit {
     this.TOKEN=localStorage.getItem("token");
     console.log(this.TOKEN);
 
-    // this.userService.getUserRecordByToken(this.TOKEN).subscribe((data:any)=>{
-    //   this.user=data.data.userid;  
-
-    //   this.userService.getUserRecordById(this.Id).subscribe((getData: any) => {
-    //     this.user = getData.data;
-    //   });
-    // });
+   
 
     this.userService.getUserRecordByToken(this.TOKEN).subscribe((getData:any)=>{
       console.log("Data retrieved for user",getData);

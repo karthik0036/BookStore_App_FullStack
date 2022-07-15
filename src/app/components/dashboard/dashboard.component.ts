@@ -85,15 +85,7 @@ export class DashboardComponent implements OnInit {
           window.location.reload();
         });
     }
-    // else{
-    //   this.cart.bookId=2;
-    //   this.cart.userId=1;
-    //   this.cart.quantity=1;
-    //   this.cartService.addCart(this.cart).subscribe((getData:any) =>{
-    //             console.log("Cart Added !");
-    //             this.cart=getData;
-    //             //window.location.reload();
-    //           });
+
     else{
       this.cartService.getCartRecordByBookId(Id).subscribe((data:any)=>{
         this.tempProduct=data;

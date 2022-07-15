@@ -43,22 +43,6 @@ export class CartComponent implements OnInit {
 
     
 
-    // this.userService.getUserRecordByToken(this.TOKEN).subscribe(data=>{
-    //   console.log("User data retrieved successfully for given token",data);
-    //   this.user=data;
-    //   this.service.getCartRecordByUserId(this.user.data[0].userid).subscribe(getData=>{
-    //     console.log("userid",this.user.data[0].userid);
-    //    console.log("Cart Data Retrieved successfully",getData);
-    //    this.cart=getData;
-    // });
-    // });
-
-    // this.bookService.getBookRecordById(this.cart.bookid).subscribe(data=>{
-    //   console.log("bookid",this.cart.bookid);
-    //   console.log("Book data retrieved",data);
-    //   this.book = data;
-    // });
-
     
     
  
